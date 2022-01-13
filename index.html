@@ -1,0 +1,197 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Mickey Talk</title>
+        <style>
+            body, html 
+            {
+            height: 100%;
+            margin: 0;
+            padding:0;
+            }
+            #chat,#inpbox{
+                width: 99.5%;
+                height: 80%;
+                border: solid;
+                overflow: scroll;
+                background-image: url(tany.jpg);
+                background-size: cover;
+                background-attachment: fixed;
+            }
+            ::-webkit-scrollbar{
+                appearance: none;
+            }
+
+            /* Track */
+            ::-webkit-scrollbar-track {
+            box-shadow: inset 0 0 5px grey; 
+            border-radius: 10px;
+            }
+            
+            /* Handle */
+            ::-webkit-scrollbar-thumb {
+            background: pink; 
+            border-radius: 10px;
+            }
+
+            /* Handle on hover */
+            ::-webkit-scrollbar-thumb:hover {
+            background: rgb(255, 131, 152); 
+            }
+            #inpbox
+            {
+                height: 50px;
+                overflow:hidden;
+            }
+            #chtheader
+            {
+                width: 99.5%;
+                border: solid;
+                height: 50px;
+                background-color: rgb(32, 32, 87);
+                border-color: rgb(32, 32, 87);
+            }
+            #ms_inp{
+                width: 80%;
+                height: 50px;
+                border: solid;
+            }
+           #emojs{
+                width:350px;
+                height: 200px;
+                overflow-wrap: break-word;
+                overflow:scroll;
+           }
+           #choices{
+                width:100%;
+               
+           }
+           #elements{
+            width:100%;
+           }
+           .popup {
+  position: relative;
+  display: inline-block;
+  cursor: pointer;
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
+}
+
+/* The actual popup */
+.popup .popuptext {
+  visibility: hidden;
+  width: 160px;
+  background-color: #555;
+  color: #fff;
+  text-align: center;
+  border-radius: 6px;
+  padding: 8px 0;
+  position: absolute;
+  z-index: 1;
+  bottom: 125%;
+  left: 50%;
+  margin-left: -80px;
+}
+
+/* Popup arrow */
+.popup .popuptext::after {
+  content: "";
+  position: absolute;
+  top: 100%;
+  left: 50%;
+  margin-left: -5px;
+  border-width: 5px;
+  border-style: solid;
+  border-color: #555 transparent transparent transparent;
+}
+
+/* Toggle this class - hide and show the popup */
+.popup .show {
+  visibility: visible;
+  -webkit-animation: fadeIn 1s;
+  animation: fadeIn 1s;
+}
+
+/* Add animation (fade in the popup) */
+@-webkit-keyframes fadeIn {
+  from {opacity: 0;} 
+  to {opacity: 1;}
+}
+
+@keyframes fadeIn {
+  from {opacity: 0;}
+  to {opacity:1 ;}
+}
+        </style>
+    </head>
+    <body>
+        <div id="chtheader">
+        </div>
+        <div id="chat"></div>
+        <!--<div id="emojs">
+            <div id="choices">
+                <button> &#128343; </button>
+                <button> &#128512; </button>
+                <button> &#128040; </button>
+                <button> &#127861; </button>
+                <button> &#9917; </button>
+                <button> &#128662; </button>
+                <button> &#128161; </button>
+                <button> &#10068; </button>
+                <button> &#127937; </button>
+            </div>
+            <div id="elements">
+                
+            </div>
+        </div>-->
+        <div id="inpbox">
+            <input id="ms_inp">
+            <!--<button id="sen" id="myPopup" class="popup" onclick="myFunction()"> &#128512; <span class="popuptext" id="myPopup">A Simple Popup!</span></button>
+            <button id="sen" > &#127908;</button>
+            <button id="sen" > &#128247;</button>
+            <button id="sen" > &#128206;</button>-->
+            <button id="sen" onclick="send()">Send</button>
+            <a href="game.html" target="_blank"><button>iq test</button></a>
+        </div>
+    </body>
+    <script>
+       // function myFunction() {
+  //var popup = document.getElementById("myPopup");
+  //popup.classList.toggle("show");
+//}
+        function send()
+        {
+            var x = document.getElementById("ms_inp").value;
+            var box = document.createElement("div");
+            var msg = document.createElement("p");
+            var content = document.createTextNode(x);
+            box.appendChild(msg);
+            msg.appendChild(content);
+            box.style.width = "fit-content";
+            box.style.height = "fit-content";
+            box.style.maxWidth = "90%";
+            box.style.overflowWrap = "break-word";
+            box.style.borderStyle = "solid";
+            box.style.borderColor = "rgb(247, 99, 123)";
+            box.style.backgroundColor = "pink";
+            box.style.padding = "10px";
+            box.style.margin = "10px";
+            box.style.borderRadius = "50px";
+            msg.style.fontFamily = "cursive";
+            msg.style.color = "rgb(32, 32, 87)";
+            var element = document.getElementById("chat");
+            element.appendChild(box);
+        }
+        var input = document.getElementById("ms_inp");
+        input.addEventListener("keyup", function(event) {
+            if (event.keyCode === 13) {
+                event.preventDefault();
+                document.getElementById("sen").click();
+            }
+        });
+        var el = document.getElementById("chat");
+        el.scrollTop = el.scrollHeight;
+    </script>
+</html>
